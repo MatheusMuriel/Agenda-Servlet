@@ -12,17 +12,10 @@ public class HelloWorldServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String name = req.getParameter("name");
-
 
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
-        out.println("<h1> " + name +"</h1>");
-
-        if (name.equals("contatos")){
-            resp.sendRedirect("http://localhost:8080/contato.jsp");
-        }
-        //resp.sendRedirect("http://localhost:8080/contato.jsp");
+        out.println("<h1> " + "???" +"</h1>");
     }
 
     @Override
@@ -31,10 +24,6 @@ public class HelloWorldServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         String destino = req.getParameter("destino");
-
-        if (destino.equals("contatos")){
-            resp.sendRedirect("http://localhost:8080/contato.jsp");
-        }
 
         switch (destino){
             case "contato":

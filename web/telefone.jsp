@@ -18,9 +18,9 @@
     </form>
 
     <form action="/telefone/novo" method="post">
-        <label>Nome</label>
-        <input type="text" name="nome" id="nome">
-        <button type="submit">Enviar</button>
+        <label>Telefone</label>
+        <input type="text" name="telefone" id="telefone">
+        <button type="submit">Criar</button>
     </form>
 </body>
 </html>

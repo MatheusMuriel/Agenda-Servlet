@@ -18,9 +18,9 @@
     </form>
 
     <form action="/grupo/novo" method="post">
-        <label>Nome</label>
-        <input type="text" name="nome" id="nome">
-        <button type="submit">Enviar</button>
+        <label>Descrição</label>
+        <input type="text" name="descricao" id="descricao">
+        <button type="submit">Criar</button>
     </form>
 </body>
 </html>

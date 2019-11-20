@@ -20,7 +20,13 @@
     <form action="/contato/novo" method="post">
         <label>Nome</label>
         <input type="text" name="nome" id="nome">
-        <button type="submit">Enviar</button>
+
+        <label>Sobrenome</label>
+        <input type="text" name="sobreNome" id="sobreNome">
+
+        <label>Email</label>
+        <input type="text" name="email" id="Email">
+        <button type="submit">Criar</button>
     </form>
 </body>
 </html>

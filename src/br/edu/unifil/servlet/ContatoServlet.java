@@ -1,11 +1,12 @@
 package br.edu.unifil.servlet;
 
+import br.edu.unifil.MVC.Controllers.ContatoController;
 import br.edu.unifil.MVC.Models.Contato;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 public class ContatoServlet extends HttpServlet {
 
@@ -27,19 +27,15 @@ public class ContatoServlet extends HttpServlet {
 
         EntityManager em = emf.createEntityManager();
 
-        Query q = em.createQuery("SELECT c FROM Contato c");
-        List r = q.getResultList();
-
-        r.stream().forEach(o -> out.println("<h2> " + o +"</h2>"));
+        ContatoController contatoController = new ContatoController(em);
+        contatoController.listarTodos()
+                .stream()
+                .forEach(o -> out.println("<h2> " + o +"</h2>"));
 
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("lab3-jsp");
-        EntityManager em = emf.createEntityManager();
-
 
         String nome = req.getParameter("nome");
         String sobreNome = req.getParameter("sobreNome");
@@ -50,17 +46,13 @@ public class ContatoServlet extends HttpServlet {
         c.setUltimoNome(sobreNome);
         c.setEmail(email);
 
-        try{
-            em.getTransaction().begin();
-            em.persist(c);
-            em.getTransaction().commit();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("lab3-jsp");
 
-            resp.sendRedirect("http://localhost:8080/contato.jsp");
-        } catch (Exception e) {
-            e.printStackTrace();
-            em.getTransaction().rollback();
-        }
+        EntityManager em = emf.createEntityManager();
 
+        ContatoController contatoController = new ContatoController(em);
+        contatoController.salvar(c);
 
+        resp.sendRedirect("http://localhost:8080/contato.jsp");
     }
 }

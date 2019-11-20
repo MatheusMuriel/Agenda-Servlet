@@ -3,7 +3,9 @@ package br.edu.unifil.MVC.Controllers;
 import br.edu.unifil.MVC.Models.Contato;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ContatoController implements _Controller<Contato> {
     EntityManager em;
@@ -53,8 +55,10 @@ public class ContatoController implements _Controller<Contato> {
     }
 
     public ArrayList<Contato> listarTodos() {
-        // TODO implementar
-        return null;
+        Query q = em.createQuery("SELECT c FROM Contato c");
+        ArrayList<Contato> r = (ArrayList<Contato>) q.getResultList();
+
+        return r;
     }
 
     public boolean existe(Contato c) {

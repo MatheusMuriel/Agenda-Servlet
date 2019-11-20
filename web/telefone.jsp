@@ -27,7 +27,7 @@
         <form action="/telefone/novo" method="post">
             <label>Telefone</label>
             <input type="text" name="telefone" id="telefone">
-            
+
             <button type="submit" class="btn btn-primary">Criar</button>
         </form>
 

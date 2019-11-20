@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class ContatoServlet extends HttpServlet {
 
@@ -21,6 +22,11 @@ public class ContatoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
+
+        out.println("<head>");
+        out.println(variaveisGlobais.HEAD_BOOTSTRAP);
+        out.println("</head>");
+
         out.println("<h1> " + "Lista de todos os Contatos" +"</h1>");
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("lab3-jsp");
@@ -28,10 +34,36 @@ public class ContatoServlet extends HttpServlet {
         EntityManager em = emf.createEntityManager();
 
         ContatoController contatoController = new ContatoController(em);
-        contatoController.listarTodos()
-                .stream()
-                .forEach(o -> out.println("<h2> " + o +"</h2>"));
+        ArrayList<Contato> listaContatos = contatoController.listarTodos();
 
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("<table class=\"table\">");
+        sb.append("<thead><tr>");
+        sb.append("<th scope=\"col\">#</th><th scope=\"col\">Nome</th><th scope=\"col\">Sobrenome</th><th scope=\"col\">Email</th>");
+        sb.append("</tr></thead>");
+        sb.append("<tbody>");
+
+        listaContatos.forEach(contato -> {
+            sb.append("<tr>");
+            sb.append("<th scope=\"row\">");
+            sb.append(contato.getId());
+            sb.append("</th>");
+            sb.append("<td>");
+            sb.append(contato.getPrimeiroNome());
+            sb.append("</td>");
+            sb.append("<td>");
+            sb.append(contato.getUltimoNome());
+            sb.append("</td>");
+            sb.append("<td>");
+            sb.append(contato.getEmail());
+            sb.append("</td>");
+            sb.append("</tr>");
+        });
+        sb.append("</tbody>");
+        sb.append("</table>");
+
+        out.println(sb.toString());
     }
 
     @Override

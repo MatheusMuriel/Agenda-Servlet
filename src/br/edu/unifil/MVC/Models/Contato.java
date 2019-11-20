@@ -1,7 +1,5 @@
 package br.edu.unifil.MVC.Models;
 
-import Controllers.ContatoController;
-
 import javax.persistence.*;
 import java.text.Normalizer;
 import java.util.ArrayList;

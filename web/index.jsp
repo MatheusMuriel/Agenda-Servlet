@@ -8,18 +8,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>Exemplo Java EE</title>
+    <title>Agendinha marota</title>
   </head>
   <body>
-  <h1>Olá</h1>
-  <p>
-    <%
-      out.println("Ola Mundo");
-    %>
-  </p>
+  <h1>Bem vindo a Agenda Servlet :D</h1>
 
-  <form action="/a" method="get">
-    <button type="submit" name="contatos">Contados</button>
+  <form name="frmRedirect" method="post" action="/a">
+    <input type="hidden" name="destino" />
+    <input type="button" name="contato" value="Contatos" onclick="{document.frmRedirect.destino.value=this.name;document.frmRedirect.submit();}" />
+    <input type="button" name="grupo" value="Grupos" onclick="{document.frmRedirect.destino.value=this.name;document.frmRedirect.submit();}" />
+    <input type="button" name="telefone" value="Telefones" onclick="{document.frmRedirect.destino.value=this.name;document.frmRedirect.submit();}" />
   </form>
+
   </body>
 </html>

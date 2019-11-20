@@ -14,12 +14,16 @@
   <h1>Olá</h1>
   <p>
     <%
-      out.println("Ola Mundo");
+      out.println("Bem vindo a Agenda Servlet :D");
     %>
   </p>
 
-  <form action="/a" method="get">
-    <button type="submit" name="contatos">Contados</button>
+  <form name="frmRedirect" method="post" action="/a">
+    <input type="hidden" name="destino" />
+    <input type="button" name="contato" value="Contatos" onclick="{document.frmRedirect.destino.value=this.name;document.frmRedirect.submit();}" />
+    <input type="button" name="grupo" value="Grupos" onclick="{document.frmRedirect.destino.value=this.name;document.frmRedirect.submit();}" />
+    <input type="button" name="telefone" value="Telefones" onclick="{document.frmRedirect.destino.value=this.name;document.frmRedirect.submit();}" />
   </form>
+
   </body>
 </html>

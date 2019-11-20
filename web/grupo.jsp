@@ -13,11 +13,11 @@
 <body>
     <h1>Grupos</h1>
 
-    <form action="/grupos/listar" method="get">
+    <form action="/grupo/listar" method="get">
         <button type="submit">Listar Grupos</button>
     </form>
 
-    <form action="/grupos/novo" method="post">
+    <form action="/grupo/novo" method="post">
         <label>Nome</label>
         <input type="text" name="nome" id="nome">
         <button type="submit">Enviar</button>

@@ -23,9 +23,7 @@ public class ContatoServlet extends HttpServlet {
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
 
-        out.println("<head>");
-        out.println(variaveisGlobais.HEAD_BOOTSTRAP);
-        out.println("</head>");
+        out.println(Util.envelopaHead("Todos os Telefones"));
 
         out.println("<h1> " + "Lista de todos os Contatos" +"</h1>");
 
@@ -36,8 +34,10 @@ public class ContatoServlet extends HttpServlet {
         ContatoController contatoController = new ContatoController(em);
         ArrayList<Contato> listaContatos = contatoController.listarTodos();
 
+        out.println(Util.gerarTable(listaContatos, "Nome", "Sobrenome", "Email"));
 
-        StringBuilder sb = new StringBuilder();
+
+        /*StringBuilder sb = new StringBuilder();
         sb.append("<table class=\"table\">");
         sb.append("<thead><tr>");
         sb.append("<th scope=\"col\">#</th><th scope=\"col\">Nome</th><th scope=\"col\">Sobrenome</th><th scope=\"col\">Email</th>");
@@ -63,7 +63,7 @@ public class ContatoServlet extends HttpServlet {
         sb.append("</tbody>");
         sb.append("</table>");
 
-        out.println(sb.toString());
+        out.println(sb.toString());*/
     }
 
     @Override

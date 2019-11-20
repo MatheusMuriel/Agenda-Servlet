@@ -8,15 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>Exemplo Java EE</title>
+    <title>Agendinha marota</title>
   </head>
   <body>
-  <h1>Olá</h1>
-  <p>
-    <%
-      out.println("Bem vindo a Agenda Servlet :D");
-    %>
-  </p>
+  <h1>Bem vindo a Agenda Servlet :D</h1>
 
   <form name="frmRedirect" method="post" action="/a">
     <input type="hidden" name="destino" />

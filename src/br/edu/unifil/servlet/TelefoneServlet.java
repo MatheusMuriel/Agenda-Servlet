@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TelefoneServlet extends HttpServlet {
@@ -22,6 +23,12 @@ public class TelefoneServlet extends HttpServlet {
 
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
+
+        out.println("<head>");
+        out.println(variaveisGlobais.HEAD_BOOTSTRAP);
+        out.println("</head>");
+
+
         out.println("<h1> " + "Lista de todos os Telefones" +"</h1>");
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("lab3-jsp");
@@ -29,9 +36,29 @@ public class TelefoneServlet extends HttpServlet {
         EntityManager em = emf.createEntityManager();
 
         TelefoneController tC = new TelefoneController(em);
-        tC.listarTodos()
-                .stream()
-                .forEach(o -> out.println("<h2> " + o +"</h2>"));
+        ArrayList<Telefone> listaTelefones = tC.listarTodos();
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("<table class=\"table\">");
+        sb.append("<thead><tr>");
+        sb.append("<th scope=\"col\">#</th><th scope=\"col\">Telefone</th>");
+        sb.append("</tr></thead>");
+        sb.append("<tbody>");
+
+        listaTelefones.forEach(telefone -> {
+            sb.append("<tr>");
+            sb.append("<th scope=\"row\">");
+            sb.append(telefone.getId());
+            sb.append("</th>");
+            sb.append("<td>");
+            sb.append(telefone.getTelefone());
+            sb.append("</td>");
+            sb.append("</tr>");
+        });
+        sb.append("</tbody>");
+        sb.append("</table>");
+
+        out.println(sb.toString());
 
     }
 

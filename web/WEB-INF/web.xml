@@ -5,6 +5,16 @@
          version="4.0">
 
     <servlet>
+        <servlet-name>hello</servlet-name>
+        <servlet-class>br.edu.unifil.servlet.HelloWorldServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hello</servlet-name>
+        <url-pattern>/a</url-pattern>
+    </servlet-mapping>
+
+    <!-- Contatos -->
+    <servlet>
         <servlet-name>novo-contato</servlet-name>
         <servlet-class>br.edu.unifil.servlet.ContatoServlet</servlet-class>
     </servlet>
@@ -22,13 +32,43 @@
         <url-pattern>/contato/listar</url-pattern>
     </servlet-mapping>
 
+    <!-- Telefones -->
     <servlet>
-        <servlet-name>hello</servlet-name>
-        <servlet-class>br.edu.unifil.servlet.HelloWorldServlet</servlet-class>
+        <servlet-name>novo-telefone</servlet-name>
+        <servlet-class>br.edu.unifil.servlet.TelefoneServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>hello</servlet-name>
-        <url-pattern>/a</url-pattern>
+        <servlet-name>novo-telefone</servlet-name>
+        <url-pattern>/telefone/novo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>lista-telefone</servlet-name>
+        <servlet-class>br.edu.unifil.servlet.TelefoneServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>lista-telefone</servlet-name>
+        <url-pattern>/telefone/listar</url-pattern>
+    </servlet-mapping>
+
+
+    <!-- Grupos -->
+    <servlet>
+        <servlet-name>novo-grupo</servlet-name>
+        <servlet-class>br.edu.unifil.servlet.GrupoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>novo-grupo</servlet-name>
+        <url-pattern>/grupo/novo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>lista-grupo</servlet-name>
+        <servlet-class>br.edu.unifil.servlet.GrupoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>lista-grupo</servlet-name>
+        <url-pattern>/grupo/listar</url-pattern>
     </servlet-mapping>
 
 </web-app>

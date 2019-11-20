@@ -6,8 +6,9 @@
 
     <persistence-unit name="lab3-jsp">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>br.edu.unifil.Entidades.Product</class>
-        <class>br.edu.unifil.Entidades.Contato</class>
+        <class>br.edu.unifil.MVC.Models.Contato</class>
+        <class>br.edu.unifil.MVC.Models.Grupo</class>
+        <class>br.edu.unifil.MVC.Models.Telefone</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"></property>
@@ -22,7 +23,7 @@
             <property name="javax.persistence.jdbc.user" value="CL7RLcbyrP"></property>
             <property name="javax.persistence.jdbc.password" value="Fslfm7CYfG"></property>
 
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>

@@ -1,6 +1,7 @@
 package br.edu.unifil.servlet;
 
 import br.edu.unifil.MVC.Controllers.TelefoneController;
+import br.edu.unifil.MVC.Models.Telefone;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -37,9 +38,18 @@ public class TelefoneServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        resp.setContentType("text/html");
-        PrintWriter out = resp.getWriter();
-        out.println("<h1> " + "TELEFONEEE" +"</h1>");
+        String telefone = req.getParameter("telefone");
 
+        Telefone t = new Telefone();
+        t.setTelefone(telefone);
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("lab3-jsp");
+
+        EntityManager em = emf.createEntityManager();
+
+        TelefoneController tC = new TelefoneController(em);
+        tC.salvar(t);
+
+        resp.sendRedirect("http://localhost:8080/telefone.jsp");
     }
 }

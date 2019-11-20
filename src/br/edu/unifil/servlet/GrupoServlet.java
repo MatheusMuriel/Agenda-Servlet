@@ -1,6 +1,7 @@
 package br.edu.unifil.servlet;
 
 import br.edu.unifil.MVC.Controllers.GrupoController;
+import br.edu.unifil.MVC.Models.Grupo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -36,9 +37,18 @@ public class GrupoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        resp.setContentType("text/html");
-        PrintWriter out = resp.getWriter();
-        out.println("<h1> " + "GRUPOOOOOOOOOO" +"</h1>");
+        String descricao = req.getParameter("descricao");
 
+        Grupo g = new Grupo();
+        g.setDescription(descricao);
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("lab3-jsp");
+
+        EntityManager em = emf.createEntityManager();
+
+        GrupoController gC = new GrupoController(em);
+        gC.salvar(g);
+
+        resp.sendRedirect("http://localhost:8080/grupo.jsp");
     }
 }

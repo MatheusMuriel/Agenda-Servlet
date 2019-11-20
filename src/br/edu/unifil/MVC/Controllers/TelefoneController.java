@@ -3,6 +3,7 @@ package br.edu.unifil.MVC.Controllers;
 import br.edu.unifil.MVC.Models.Telefone;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.ArrayList;
 
 public class TelefoneController implements _Controller<Telefone> {
@@ -54,8 +55,10 @@ public class TelefoneController implements _Controller<Telefone> {
     }
 
     public ArrayList<Telefone> listarTodos() {
-        // TODO implementar
-        return null;
+        Query q = em.createQuery("SELECT t FROM Telefone t");
+        ArrayList<Telefone> r = (ArrayList<Telefone>) q.getResultList();
+
+        return r;
     }
 
     /**

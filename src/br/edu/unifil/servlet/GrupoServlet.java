@@ -1,5 +1,7 @@
 package br.edu.unifil.servlet;
 
+import br.edu.unifil.MVC.Controllers.GrupoController;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -25,11 +27,10 @@ public class GrupoServlet extends HttpServlet {
 
         EntityManager em = emf.createEntityManager();
 
-        Query q = em.createQuery("SELECT g FROM Grupo g");
-        List r = q.getResultList();
-
-        r.stream().forEach(o -> out.println("<h2> " + o +"</h2>"));
-
+        GrupoController gC = new GrupoController(em);
+        gC.listarTodos()
+                .stream()
+                .forEach(o -> out.println("<h2> " + o +"</h2>"));
     }
 
     @Override

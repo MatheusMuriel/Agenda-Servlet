@@ -3,6 +3,7 @@ package br.edu.unifil.MVC.Controllers;
 import br.edu.unifil.MVC.Models.Grupo;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.ArrayList;
 
 public class GrupoController implements _Controller<Grupo> {
@@ -54,8 +55,10 @@ public class GrupoController implements _Controller<Grupo> {
     }
 
     public ArrayList<Grupo> listarTodos() {
-        // TODO implementar
-        return null;
+        Query q = em.createQuery("SELECT g FROM Grupo g");
+        ArrayList<Grupo> r = (ArrayList<Grupo>) q.getResultList();
+
+        return r;
     }
 
     public boolean existe(Grupo g) {

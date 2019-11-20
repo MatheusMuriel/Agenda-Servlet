@@ -1,5 +1,7 @@
 package br.edu.unifil.servlet;
 
+import br.edu.unifil.MVC.Controllers.TelefoneController;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -25,10 +27,10 @@ public class TelefoneServlet extends HttpServlet {
 
         EntityManager em = emf.createEntityManager();
 
-        Query q = em.createQuery("SELECT t FROM Telefone t");
-        List r = q.getResultList();
-
-        r.stream().forEach(o -> out.println("<h2> " + o +"</h2>"));
+        TelefoneController tC = new TelefoneController(em);
+        tC.listarTodos()
+                .stream()
+                .forEach(o -> out.println("<h2> " + o +"</h2>"));
 
     }
 

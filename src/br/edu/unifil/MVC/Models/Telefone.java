@@ -17,8 +17,10 @@ public class Telefone {
 
     }
 
-    /*@ManyToMany(mappedBy="telefones")
-    Collection<Contato> contatos;*/
+    @Override
+    public String toString() {
+        return this.telefone;
+    }
 
     public int getId() {
         return id_telefone;

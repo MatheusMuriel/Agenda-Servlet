@@ -1,6 +1,7 @@
 package br.edu.unifil.MVC.Models;
 
 import javax.persistence.*;
+import java.util.StringJoiner;
 
 @Entity
 public class Grupo {
@@ -17,8 +18,10 @@ public class Grupo {
 
     }
 
-    /*@ManyToMany(mappedBy="grupos")
-    Collection<Contato> contatos;*/
+    @Override
+    public String toString() {
+        return this.description;
+    }
 
     public int getId() {
         return id_grupo;

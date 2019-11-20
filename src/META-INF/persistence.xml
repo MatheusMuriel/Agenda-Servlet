@@ -11,9 +11,9 @@
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"></property>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://remotemysql.com:3306/CL7RLcbyrP"></property>
-            <property name="javax.persistence.jdbc.user" value="CL7RLcbyrP"></property>
-            <property name="javax.persistence.jdbc.password" value="h1ZyUuIsmo"></property>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://10.20.1.115:3306/lab3"></property>
+            <property name="javax.persistence.jdbc.user" value="root"></property>
+            <property name="javax.persistence.jdbc.password" value="q1w2e3r4"></property>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>

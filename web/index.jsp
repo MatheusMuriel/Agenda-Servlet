@@ -17,5 +17,9 @@
       out.println("Ola Mundo");
     %>
   </p>
+
+  <form action="/a" method="get">
+    <button type="submit" name="contatos">Contados</button>
+  </form>
   </body>
 </html>

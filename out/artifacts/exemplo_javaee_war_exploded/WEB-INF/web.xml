@@ -12,4 +12,23 @@
         <servlet-name>novo-contato</servlet-name>
         <url-pattern>/contato/novo</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>lista-contatos</servlet-name>
+        <servlet-class>br.edu.unifil.servlet.ContatoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>lista-contatos</servlet-name>
+        <url-pattern>/contato/listar</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>hello</servlet-name>
+        <servlet-class>br.edu.unifil.servlet.HelloWorldServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hello</servlet-name>
+        <url-pattern>/a</url-pattern>
+    </servlet-mapping>
+
 </web-app>

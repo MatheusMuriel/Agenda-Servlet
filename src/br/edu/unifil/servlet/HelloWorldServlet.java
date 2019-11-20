@@ -12,13 +12,11 @@ public class HelloWorldServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+        String name = req.getParameter("name");
 
-        // Set response content type
-        resp.setContentType("text/html");
-//        resp.addHeader("header-teste","teste123");
-
-        // Actual logic goes here.
-        PrintWriter out = resp.getWriter();
-        out.println("<h1> Hello, world!</h1>");
+        if (name.equals("contatos")){
+            resp.sendRedirect("http://localhost:8080/contato.jsp");
+        }
+        //resp.sendRedirect("http://localhost:8080/contato.jsp");
     }
 }

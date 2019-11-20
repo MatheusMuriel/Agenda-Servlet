@@ -8,10 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Contato</title>
+    <title>Contatos</title>
 </head>
 <body>
-    <h1>Contato</h1>
+    <h1>Contatos</h1>
+
+    <form action="/contato/listar" method="get">
+        <button type="submit">Listar Contatos</button>
+    </form>
+
     <form action="/contato/novo" method="post">
         <label>Nome</label>
         <input type="text" name="nome" id="nome">

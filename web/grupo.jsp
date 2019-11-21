@@ -24,6 +24,9 @@
             <button type="submit" class="btn btn-primary">Listar Grupos</button>
         </form>
 
+        <a type="button" class="btn btn-primary" href="/vincular.jsp?entidade1=grupo&entidade2=contato"
+        > Vincular Grupo com Contato</a>
+
         <form action="/grupo/novo" method="post">
             <label>Descrição</label>
             <input type="text" name="descricao" id="descricao">

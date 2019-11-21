@@ -24,6 +24,9 @@
             <button type="submit" class="btn btn-primary">Listar Telefones</button>
         </form>
 
+        <a type="button" class="btn btn-primary" href="/vincular.jsp?entidade1=telefone&entidade2=contato"
+        > Vincular Telefone com Contato</a>
+
         <form action="/telefone/novo" method="post">
             <label>Telefone</label>
             <input type="text" name="telefone" id="telefone">

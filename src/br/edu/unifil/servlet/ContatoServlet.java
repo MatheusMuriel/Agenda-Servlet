@@ -1,7 +1,9 @@
 package br.edu.unifil.servlet;
 
 import br.edu.unifil.MVC.Controllers.ContatoController;
+import br.edu.unifil.MVC.Controllers.TelefoneController;
 import br.edu.unifil.MVC.Models.Contato;
+import br.edu.unifil.MVC.Models.Telefone;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -35,35 +37,6 @@ public class ContatoServlet extends HttpServlet {
         ArrayList<Contato> listaContatos = contatoController.listarTodos();
 
         out.println(Util.gerarTable(listaContatos, "Nome", "Sobrenome", "Email"));
-
-
-        /*StringBuilder sb = new StringBuilder();
-        sb.append("<table class=\"table\">");
-        sb.append("<thead><tr>");
-        sb.append("<th scope=\"col\">#</th><th scope=\"col\">Nome</th><th scope=\"col\">Sobrenome</th><th scope=\"col\">Email</th>");
-        sb.append("</tr></thead>");
-        sb.append("<tbody>");
-
-        listaContatos.forEach(contato -> {
-            sb.append("<tr>");
-            sb.append("<th scope=\"row\">");
-            sb.append(contato.getId());
-            sb.append("</th>");
-            sb.append("<td>");
-            sb.append(contato.getPrimeiroNome());
-            sb.append("</td>");
-            sb.append("<td>");
-            sb.append(contato.getUltimoNome());
-            sb.append("</td>");
-            sb.append("<td>");
-            sb.append(contato.getEmail());
-            sb.append("</td>");
-            sb.append("</tr>");
-        });
-        sb.append("</tbody>");
-        sb.append("</table>");
-
-        out.println(sb.toString());*/
     }
 
     @Override
@@ -77,7 +50,7 @@ public class ContatoServlet extends HttpServlet {
         c.setPrimeiroNome(nome);
         c.setUltimoNome(sobreNome);
         c.setEmail(email);
-
+        
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("lab3-jsp");
 
         EntityManager em = emf.createEntityManager();

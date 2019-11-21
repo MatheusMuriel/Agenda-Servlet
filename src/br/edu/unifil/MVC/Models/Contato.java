@@ -2,8 +2,7 @@ package br.edu.unifil.MVC.Models;
 
 import javax.persistence.*;
 import java.text.Normalizer;
-import java.util.ArrayList;
-import java.util.StringJoiner;
+import java.util.*;
 
 @Entity
 public class Contato {
@@ -16,19 +15,20 @@ public class Contato {
 
     String email;
 
-    /*@ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany
     @JoinTable(
-            name = "contatos_telefones",
+            name = "Contato_Telefone",
             joinColumns = { @JoinColumn(name = "id_contato") },
-            inverseJoinColumns = { @JoinColumn(name = "id_telefone") })
-    Collection<Telefone> telefones;*/
+            inverseJoinColumns = { @JoinColumn(name = "id_telefone") }
+    )
+    Set<Telefone> telefones = new HashSet<>();
 
-    /*@ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany
     @JoinTable(
-            name = "contatos_gupos",
+            name = "Contato_grupo",
             joinColumns = { @JoinColumn(name = "id_contato") },
             inverseJoinColumns = { @JoinColumn(name = "id_grupo") })
-    Collection<Grupo> grupos;*/
+    Set<Grupo> grupos = new HashSet<>();
 
     public Contato(String primeiroNome, String ultimoNome, String email) {
         this.primeiroNome = primeiroNome;
@@ -99,8 +99,8 @@ public class Contato {
         return  null;
     }
 
-    public void addReferenciaTelefone(Object ob) {
-        //this.telefones.add( (Telefone) ob );
+    public void addReferenciaTelefone(Telefone t) {
+        this.telefones.add( t );
     }
 
     public int getId() {

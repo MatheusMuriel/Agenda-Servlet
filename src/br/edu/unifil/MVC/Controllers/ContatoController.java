@@ -5,7 +5,6 @@ import br.edu.unifil.MVC.Models.Contato;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ContatoController implements _Controller<Contato> {
     EntityManager em;

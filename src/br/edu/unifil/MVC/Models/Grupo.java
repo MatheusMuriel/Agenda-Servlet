@@ -1,6 +1,8 @@
 package br.edu.unifil.MVC.Models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.StringJoiner;
 
 @Entity
@@ -10,6 +12,9 @@ public class Grupo {
     int id_grupo;
 
     String description;
+
+    @ManyToMany(mappedBy = "grupos")
+    Set<Contato> contatos = new HashSet<>();
 
     public Grupo(String descricao) {
     }

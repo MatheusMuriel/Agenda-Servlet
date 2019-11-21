@@ -1,6 +1,10 @@
 package br.edu.unifil.MVC.Models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Telefone {
@@ -9,6 +13,9 @@ public class Telefone {
     int id_telefone;
 
     String telefone;
+
+    @ManyToMany(mappedBy = "telefones")
+    Set<Contato> contatos = new HashSet<>();
 
     public Telefone(String telefone) {
     }

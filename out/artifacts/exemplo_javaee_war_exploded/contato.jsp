@@ -24,6 +24,12 @@
             <button type="submit" class="btn btn-primary">Listar Contatos</button>
         </form>
 
+        <a type="button" class="btn btn-primary" href="/vincular.jsp?entidade1=contato&entidade2=telefone"
+        > Vincular Contato com Telefone </a>
+
+        <a type="button" class="btn btn-primary" href="/vincular.jsp?entidade1=contato&entidade2=grupo"
+        > Vincular Contato com Grupo </a>
+
         <form action="/contato/novo" method="post">
             <label>Nome</label>
             <input type="text" name="nome" id="nome">

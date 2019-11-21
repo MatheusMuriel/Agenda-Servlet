@@ -25,7 +25,7 @@ public class Contato {
 
     @ManyToMany
     @JoinTable(
-            name = "Contato_grupo",
+            name = "Contato_Grupo",
             joinColumns = { @JoinColumn(name = "id_contato") },
             inverseJoinColumns = { @JoinColumn(name = "id_grupo") })
     Set<Grupo> grupos = new HashSet<>();
@@ -99,8 +99,12 @@ public class Contato {
         return  null;
     }
 
-    public void addReferenciaTelefone(Telefone t) {
+    public void vinculaTelefone(Telefone t) {
         this.telefones.add( t );
+    }
+
+    public void vinculaGrupo(Grupo g) {
+        this.grupos.add(g);
     }
 
     public int getId() {
@@ -125,5 +129,12 @@ public class Contato {
 
     public void setUltimoNome(String ultimoNome) {
         this.ultimoNome = ultimoNome;
+    }
+
+    public String getNomeCompleto() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.getPrimeiroNome());
+        sb.append(this.getUltimoNome());
+        return sb.toString();
     }
 }

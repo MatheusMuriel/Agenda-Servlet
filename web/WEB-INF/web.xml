@@ -13,6 +13,17 @@
         <url-pattern>/a</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>vincular</servlet-name>
+        <servlet-class>br.edu.unifil.servlet.VinculadorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>vincular</servlet-name>
+        <url-pattern>/vincular</url-pattern>
+    </servlet-mapping>
+
+
+
     <!-- Contatos -->
     <servlet>
         <servlet-name>novo-contato</servlet-name>

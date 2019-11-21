@@ -33,8 +33,8 @@ public class ContatoServlet extends HttpServlet {
 
         EntityManager em = emf.createEntityManager();
 
-        ContatoController contatoController = new ContatoController(em);
-        ArrayList<Contato> listaContatos = contatoController.listarTodos();
+        ContatoController cC = new ContatoController(em);
+        ArrayList<Contato> listaContatos = cC.listarTodos();
 
         out.println(Util.gerarTable(listaContatos, "Nome", "Sobrenome", "Email"));
     }
@@ -55,8 +55,8 @@ public class ContatoServlet extends HttpServlet {
 
         EntityManager em = emf.createEntityManager();
 
-        ContatoController contatoController = new ContatoController(em);
-        contatoController.salvar(c);
+        ContatoController cC = new ContatoController(em);
+        cC.salvar(c);
 
         resp.sendRedirect("http://localhost:8080/contato.jsp");
     }

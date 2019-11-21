@@ -89,6 +89,8 @@
             </div>
 
             <div class="row justify-content-center">
+                <input type="hidden" name="entidade1" value=<%=entidade1%> />
+                <input type="hidden" name="entidade2" value=<%=entidade2%>/>
                     <input type="button" class="btn btn-primary" name="" value="Vincular"
                            onclick="{document.frmVincular.submit();}"
                     />

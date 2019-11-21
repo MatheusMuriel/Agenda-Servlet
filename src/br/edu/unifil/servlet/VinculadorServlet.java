@@ -25,9 +25,9 @@ public class VinculadorServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String entidade1 = req.getParameter("entidade1");
+        String entidade1 = req.getParameter("entidade1").replaceAll("\\\\|\\/", "");
         int id1 = Integer.parseInt(req.getParameter("id_1").replaceAll("(\\s|\\n|\\t|\\\")", ""));
-        String entidade2 = req.getParameter("entidade2");
+        String entidade2 = req.getParameter("entidade2").replaceAll("\\\\|\\/", "");
         int id2 = Integer.parseInt(req.getParameter("id_2").replaceAll("(\\s|\\n|\\t|\\\")", ""));
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("lab3-jsp");
@@ -48,10 +48,12 @@ public class VinculadorServlet extends HttpServlet {
                     case "telefone":
                         t = tC.findById(id2);
                         c.vinculaTelefone(t);
+                        cC.salvar(c);
                         break;
                     case "grupo":
                         g = gC.findById(id2);
                         c.vinculaGrupo(g);
+                        cC.salvar(c);
                         break;
                 }
                 break;
@@ -60,6 +62,7 @@ public class VinculadorServlet extends HttpServlet {
                 if (entidade2.equals("contato")){
                     c = cC.findById(id2);
                     c.vinculaTelefone(t);
+                    cC.salvar(c);
                 } else {
                     System.err.println("Tentativa de vinculo invalida: " + entidade1 + " <-> " + entidade2);
                 }
@@ -68,6 +71,7 @@ public class VinculadorServlet extends HttpServlet {
                 if (entidade2.equals("contato")){
                     c = cC.findById(id2);
                     c.vinculaGrupo(g);
+                    cC.salvar(c);
                 } else {
                     System.err.println("Tentativa de vinculo invalida: " + entidade1 + " <-> " + entidade2);
                 }

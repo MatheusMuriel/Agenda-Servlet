@@ -147,6 +147,27 @@ public class Util {
         return null;
     }
 
+    public static ContatoController getContatoController() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("lab3-jsp");
+        EntityManager em = emf.createEntityManager();
+
+        return new ContatoController(em);
+    }
+
+    public static TelefoneController getTelefoneController(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("lab3-jsp");
+        EntityManager em = emf.createEntityManager();
+
+        return new TelefoneController(em);
+    }
+
+    public static GrupoController getGrupoController(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("lab3-jsp");
+        EntityManager em = emf.createEntityManager();
+
+        return new GrupoController(em);
+    }
+
     public enum acoesEntidade{
         alterar, excluir, criar
     }

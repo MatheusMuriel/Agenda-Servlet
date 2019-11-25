@@ -34,6 +34,11 @@
             <button type="submit" class="btn btn-primary">Criar</button>
         </form>
 
+        <div class="row justify-content-md-center" style="padding-top: 30px;">
+            <a type="button" class="btn btn-secondary" href="/index.jsp"
+            > Voltar </a>
+        </div>
+
     </div>
 </body>
 </html>

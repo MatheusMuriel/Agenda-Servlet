@@ -41,22 +41,39 @@ public class ContatoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        String nome = req.getParameter("nome");
-        String sobreNome = req.getParameter("sobreNome");
-        String email = req.getParameter("email");
-
-        Contato c = new Contato();
-        c.setPrimeiroNome(nome);
-        c.setUltimoNome(sobreNome);
-        c.setEmail(email);
-        
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("lab3-jsp");
-
         EntityManager em = emf.createEntityManager();
-
         ContatoController cC = new ContatoController(em);
-        cC.salvar(c);
+
+        String id = req.getParameter("id");
+
+        if (id != null) {
+            id = id.replaceAll("\\/|\\s|&|-","");
+        }
+
+        if(id == null){
+            String nome = req.getParameter("nome_criar");
+            String sobreNome = req.getParameter("sobrenome_criar");
+            String email = req.getParameter("email_criar");
+
+            Contato c = new Contato();
+            c.setPrimeiroNome(nome);
+            c.setUltimoNome(sobreNome);
+            c.setEmail(email);
+
+            cC.salvar(c);
+        } else {
+            String nome = req.getParameter("nome_alterar");
+            String sobreNome = req.getParameter("sobrenome_alterar");
+            String email = req.getParameter("email_alterar");
+
+            Contato c = cC.findById( Integer.parseInt(id) );
+            c.setPrimeiroNome(nome);
+            c.setUltimoNome(sobreNome);
+            c.setEmail(email);
+
+            cC.salvar(c);
+        }
 
         resp.sendRedirect("http://localhost:8080/contato.jsp");
     }

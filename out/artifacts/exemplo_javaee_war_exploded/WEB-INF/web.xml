@@ -43,6 +43,15 @@
         <url-pattern>/contato/listar</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>alterar-contatos</servlet-name>
+        <servlet-class>br.edu.unifil.servlet.ContatoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>alterar-contatos</servlet-name>
+        <url-pattern>/contato/alterar</url-pattern>
+    </servlet-mapping>
+
     <!-- Telefones -->
     <servlet>
         <servlet-name>novo-telefone</servlet-name>

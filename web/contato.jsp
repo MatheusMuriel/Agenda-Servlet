@@ -1,4 +1,6 @@
-<%@ page import="br.edu.unifil.servlet.Util" %><%--
+<%@ page import="br.edu.unifil.servlet.Util" %>
+<%@ page import="br.edu.unifil.MVC.Controllers.ContatoController" %>
+<%@ page import="br.edu.unifil.MVC.Models.Contato" %><%--
   Created by IntelliJ IDEA.
   User: mhadaniya
   Date: 05/11/19
@@ -28,26 +30,32 @@
     %>
     <div class="container">
 
-        <%if(acao == Util.acoesEntidade.alterar && id != -1){%>
+        <%if(acao == Util.acoesEntidade.alterar){%>
 
         <div class="row justify-content-md-center">
             <h1>Alterando Contatado</h1>
         </div>
 
+        <%
+            ContatoController cC = Util.getContatoController();
+            Contato c = cC.findById(id);
+        %>
+
         <form action="/contato/alterar" method="post">
+            <input type="hidden" name="id" value=<%=c.getId()%>/>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nome_alterar">Nome</label>
-                    <input type="text" class="form-control" id="nome_alterar" placeholder="Nome">
+                    <input type="text" class="form-control" name="nome_alterar" id="nome_alterar" placeholder="Nome" value=<%=c.getPrimeiroNome()%>>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="sobreNome_alterar">Sobrenome</label>
-                    <input type="text" class="form-control" id="sobreNome_alterar" placeholder="Sobrenome">
+                    <label for="sobrenome_alterar">Sobrenome</label>
+                    <input type="text" class="form-control" name="sobrenome_alterar" id="sobrenome_alterar" placeholder="Sobrenome" value=<%=c.getUltimoNome()%>>
                 </div>
             </div>
             <div class="form-group">
-                <label for="Email_alterar">Email</label>
-                <input type="email" class="form-control" id="Email_alterar" placeholder="Email">
+                <label for="email_alterar">Email</label>
+                <input type="email" class="form-control" name="email_alterar" id="email_alterar" placeholder="Email" value=<%=c.getEmail()%>>
             </div>
 
             <button type="submit" class="btn btn-primary">Salvar</button>
@@ -55,66 +63,64 @@
         </form>
 
         <%} else if(acao == Util.acoesEntidade.criar) {%>
-
         <div class="row justify-content-md-center">
             <h1>Novo Contatado</h1>
         </div>
 
         <form action="/contato/novo" method="post">
+
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nome_alterar">Nome</label>
-                    <input type="text" class="form-control" id="nome_novo" placeholder="Nome">
+                    <input type="text" class="form-control" name="nome_criar" id="nome_criar" placeholder="Nome">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="sobreNome_alterar">Sobrenome</label>
-                    <input type="text" class="form-control" id="sobreNome_novo" placeholder="Sobrenome">
+                    <label for="sobrenome_alterar">Sobrenome</label>
+                    <input type="text" class="form-control" name="sobrenome_criar" id="sobrenome_criar" placeholder="Sobrenome">
                 </div>
             </div>
             <div class="form-group">
-                <label for="Email_alterar">Email</label>
-                <input type="email" class="form-control" id="Email_novo" placeholder="Email">
+                <label for="email_alterar">Email</label>
+                <input type="email" class="form-control" name="email_criar" id="email_criar" placeholder="Email">
             </div>
 
             <button type="submit" class="btn btn-primary">Salvar</button>
             <a class="btn btn-danger" href="/contato.jsp">Cancelar</a>
         </form>
 
-        <%} else if(acao == Util.acoesEntidade.excluir && id != -1) {%>
+        <%} else if(acao == Util.acoesEntidade.excluir) {%>
             <h5>Deletado**</h5>
         <%} else {%>
             <div class="row justify-content-md-center">
                 <h1>Contatos</h1>
             </div>
 
-            <form action="/contato/listar" method="get">
-                <button type="submit" class="btn btn-primary">Listar Contatos</button>
-            </form>
+            <div class="row justify-content-md-center" style="padding-top: 20px;">
+                <form action="/contato/listar" method="get">
+                    <button type="submit" class="btn btn-primary">Listar Contatos</button>
+                </form>
+            </div>
 
-            <%String urlCriar = "/contato.jsp?acao=" + Util.acoesEntidade.criar + "&id=-1";%>
-            <a type="button" class="btn btn-primary" href=<%=urlCriar%>
-            > Criar novo Contato</a>
+            <div class="row justify-content-md-center" style="padding-top: 10px;">
+                <%String urlCriar = "/contato.jsp?acao=" + Util.acoesEntidade.criar + "&id=-1";%>
+                <a type="button" class="btn btn-primary" href=<%=urlCriar%>
+                > Criar novo Contato </a>
+            </div>
 
-            <a type="button" class="btn btn-primary" href="/vincular.jsp?entidade1=contato&entidade2=telefone"
-            > Vincular Contato com Telefone </a>
+            <div class="row justify-content-md-center" style="padding-top: 10px;">
+                <a type="button" class="btn btn-primary" href="/vincular.jsp?entidade1=contato&entidade2=telefone"
+                > Vincular Contato com Telefone </a>
+            </div>
 
-            <a type="button" class="btn btn-primary" href="/vincular.jsp?entidade1=contato&entidade2=grupo"
-            > Vincular Contato com Grupo </a>
+            <div class="row justify-content-md-center" style="padding-top: 10px;">
+                <a type="button" class="btn btn-primary" href="/vincular.jsp?entidade1=contato&entidade2=grupo"
+                > Vincular Contato com Grupo </a>
+            </div>
 
-            <!--
-            <form action="/contato/novo" method="post">
-                <label>Nome</label>
-                <input type="text" name="nome" id="nome">
-
-                <label>Sobrenome</label>
-                <input type="text" name="sobreNome" id="sobreNome">
-
-                <label>Email</label>
-                <input type="text" name="email" id="Email">
-
-                <button type="submit" class="btn btn-primary">Criar</button>
-            </form>
-            -->
+            <div class="row justify-content-md-center" style="padding-top: 30px;">
+                <a type="button" class="btn btn-secondary" href="/index.jsp"
+                > Voltar </a>
+            </div>
         <%}%>
     </div>
 </body>

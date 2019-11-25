@@ -51,6 +51,7 @@ public class Util {
         items.forEach(o -> {
             sb.append("<tr>");
             Class<?> clazz = o.getClass();
+            int id = -1;
             for(Field field : clazz.getDeclaredFields()) {
                 field.setAccessible(true);
                 String nameF = field.getName();
@@ -61,6 +62,7 @@ public class Util {
                     e.printStackTrace();
                 }
                 if (nameF.contains("id")){
+                    id = (int) value;
                     sb.append("<th scope=\"row\">");
                     sb.append(value);
                     sb.append("</th>");
@@ -70,6 +72,24 @@ public class Util {
                     sb.append("</td>");
                 }
             }
+            sb.append("<td>");
+            sb.append("<a type=\"button\" class=\"btn btn-primary\" href=");
+            sb.append("\"/");
+            sb.append(clazz.getSimpleName().toLowerCase());
+            sb.append(".jsp?");
+
+            sb.append("acao=");
+            sb.append(acoesEntidade.alterar);
+            sb.append("&");
+            sb.append("id=");
+            sb.append(id);
+
+            sb.append("\">");
+
+            sb.append("Alterar");
+            sb.append("</a>");
+            sb.append("</td>");
+
             sb.append("</tr>");
         });
         sb.append("</tbody>");
@@ -125,5 +145,9 @@ public class Util {
                 return listaRetorno_grupo;
         }
         return null;
+    }
+
+    public enum acoesEntidade{
+        alterar, excluir, criar
     }
 }

@@ -54,6 +54,34 @@
             <a class="btn btn-danger" href="/contato.jsp">Cancelar</a>
         </form>
 
+        <%} else if(acao == Util.acoesEntidade.criar) {%>
+
+        <div class="row justify-content-md-center">
+            <h1>Novo Contatado</h1>
+        </div>
+
+        <form action="/contato/novo" method="post">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nome_alterar">Nome</label>
+                    <input type="text" class="form-control" id="nome_novo" placeholder="Nome">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="sobreNome_alterar">Sobrenome</label>
+                    <input type="text" class="form-control" id="sobreNome_novo" placeholder="Sobrenome">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Email_alterar">Email</label>
+                <input type="email" class="form-control" id="Email_novo" placeholder="Email">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a class="btn btn-danger" href="/contato.jsp">Cancelar</a>
+        </form>
+
+        <%} else if(acao == Util.acoesEntidade.excluir && id != -1) {%>
+            <h5>Deletado**</h5>
         <%} else {%>
             <div class="row justify-content-md-center">
                 <h1>Contatos</h1>
@@ -63,12 +91,17 @@
                 <button type="submit" class="btn btn-primary">Listar Contatos</button>
             </form>
 
+            <%String urlCriar = "/contato.jsp?acao=" + Util.acoesEntidade.criar + "&id=-1";%>
+            <a type="button" class="btn btn-primary" href=<%=urlCriar%>
+            > Criar novo Contato</a>
+
             <a type="button" class="btn btn-primary" href="/vincular.jsp?entidade1=contato&entidade2=telefone"
             > Vincular Contato com Telefone </a>
 
             <a type="button" class="btn btn-primary" href="/vincular.jsp?entidade1=contato&entidade2=grupo"
             > Vincular Contato com Grupo </a>
 
+            <!--
             <form action="/contato/novo" method="post">
                 <label>Nome</label>
                 <input type="text" name="nome" id="nome">
@@ -81,6 +114,7 @@
 
                 <button type="submit" class="btn btn-primary">Criar</button>
             </form>
+            -->
         <%}%>
     </div>
 </body>

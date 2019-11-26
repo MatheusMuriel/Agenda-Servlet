@@ -16,14 +16,14 @@
   </head>
   <body>
 
-  <div class="container">
+  <div class="container-fluid h-100" style="height: 100%">
     <div class="row justify-content-md-center">
       <h1>Bem vindo a Agenda Servlet :D</h1>
     </div>
 
     <form name="frmRedirect" method="post" action="/a">
       <input type="hidden" name="destino" />
-      <div class="row justify-content-center">
+      <div class="row justify-content-center" style="padding-top: 40px">
         <div class="col-2">
           <div class="row justify-content-center">
             <input type="button" class="btn btn-primary" name="contato" value="Contatos"
@@ -45,6 +45,9 @@
             />
           </div>
         </div>
+      </div>
+      <div class="row align-items-end">
+        <p class="mt-5 mb-3 text-muted">© 2019 - Matheus Muriel</p>
       </div>
     </form>
   </div>

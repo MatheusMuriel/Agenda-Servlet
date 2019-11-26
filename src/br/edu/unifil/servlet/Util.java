@@ -35,7 +35,7 @@ public class Util {
     public static String gerarTable(ArrayList<?> items, String... titlesHeadTable){
         StringBuilder sb = new StringBuilder();
 
-        sb.append("<table class=\"table\">");
+        sb.append("<table class=\"table\" style=\"width: 70%;\">");
         sb.append("<thead><tr>");
         sb.append("<th scope=\"col\">#</th>");
 
@@ -44,6 +44,9 @@ public class Util {
             sb.append(titleAux);
             sb.append("</th>");
         }
+        sb.append("<th scope=\"col\">");
+        sb.append(" ");
+        sb.append("</th>");
 
         sb.append("</tr></thead>");
         sb.append("<tbody>");
@@ -72,28 +75,42 @@ public class Util {
                     sb.append("</td>");
                 }
             }
-            sb.append("<td>");
-            sb.append("<a type=\"button\" class=\"btn btn-primary\" href=");
-            sb.append("\"/");
-            sb.append(clazz.getSimpleName().toLowerCase());
-            sb.append(".jsp?");
-
-            sb.append("acao=");
-            sb.append(acoesEntidade.alterar);
-            sb.append("&");
-            sb.append("id=");
-            sb.append(id);
-
-            sb.append("\">");
-
-            sb.append("Alterar");
-            sb.append("</a>");
+            sb.append("<td align=\"center\" style>");
+            sb.append(adicionarBotaoAcao(clazz, id, acoesEntidade.alterar, "Alterar"));
+            sb.append(adicionarBotaoAcao(clazz, id, acoesEntidade.excluir, "Excluir"));
             sb.append("</td>");
 
             sb.append("</tr>");
         });
         sb.append("</tbody>");
         sb.append("</table>");
+
+        return sb.toString();
+    }
+
+    private static String adicionarBotaoAcao(Class clazz, int id, acoesEntidade acao, String textoBotao) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("<a type=\"button\" class=\"");
+        sb.append(acao == acoesEntidade.excluir ? "btn btn-danger" : "btn btn-primary");
+        sb.append("\" ");
+        sb.append("style=\"margin-right: 10px;\" ");
+        sb.append("href=");
+        sb.append("\"/");
+        sb.append(clazz.getSimpleName().toLowerCase());
+        sb.append(".jsp?");
+
+        sb.append("acao=");
+        sb.append(acao);
+        sb.append("&");
+        sb.append("id=");
+        sb.append(id);
+
+        sb.append("\">");
+
+        sb.append(textoBotao);
+        sb.append("</a>");
+
 
         return sb.toString();
     }
